@@ -1,0 +1,88 @@
+import React from 'react';
+import moment from 'moment';
+import styled from 'styled-components';
+import Button from './UI/Button';
+import Backdrop from './UI/Backdrop';
+import Card from './UI/Card';
+import { connect } from 'react-redux';
+import { Spring, config } from 'react-spring';
+
+const Table = styled.table`
+  text-align: left;
+  text-transform: uppercase;
+`;
+
+const Logs = styled.div``;
+
+const logs = props => {
+  return (
+    <div>
+      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={config.slow}>
+        {styles => (
+          <Backdrop style={styles} onClick={props.logsToggle}>
+            <Card>
+              <Logs>
+                {props.state.logs ? (
+                  <div
+                    style={{
+                      overflow: 'scroll',
+                      maxHeight: '50vh',
+                      margin: '1rem'
+                    }}
+                  >
+                    <Table cellPadding="10">
+                      <thead>
+                        <tr>
+                          <th>date</th>
+                          <th>time</th>
+                          <th>water consumed</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {props.state.logs
+                          ? props.state.logs
+                              .slice()
+                              .reverse()
+                              .map((log, index) => (
+                                <tr key={index}>
+                                  <td>
+                                    {moment(log.timestamp).format('DD/MM/YYYY')}
+                                  </td>
+                                  <td>
+                                    {moment(log.timestamp).format('k:mm a')}
+                                  </td>
+                                  <td>{log.amount}ml</td>
+                                </tr>
+                                // <ul style={{ display: 'block' }}>
+                                //   <li>
+                                //     {moment(log.timestamp).format('DD/MM/YYYY')} -{' '}
+                                //     {moment(log.timestamp).format('hh:mm:ss a')} -{' '}
+                                //     {log.amount}ml
+                                //   </li>
+                                // </ul>
+                              ))
+                          : null}
+                      </tbody>
+                    </Table>
+                  </div>
+                ) : (
+                  <div style={{ textAlign: 'center' }}>
+                    <h2>No Water Consumption Logged...</h2>
+                    <h4>Get hydrating buddy!</h4>
+                  </div>
+                )}
+              </Logs>
+              <Button danger>CLOSE</Button>
+            </Card>
+          </Backdrop>
+        )}
+      </Spring>
+    </div>
+  );
+};
+
+const mapStateToProps = state => ({
+  state
+});
+
+export default connect(mapStateToProps)(logs);
