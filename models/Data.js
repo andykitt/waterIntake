@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const DataSchema = new Schema({
   date: {
     type: String,
-    required: false
+    required: true
   },
   dayIntakeAmount: {
     type: Number,

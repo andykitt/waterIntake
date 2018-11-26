@@ -46,6 +46,7 @@ class setTarget extends Component {
     this.props.onSetTarget(this.state.target, this.props.state.date);
     this.props.targetToggle();
   };
+
   render() {
     return (
       <div>

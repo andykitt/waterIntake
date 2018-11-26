@@ -6,8 +6,8 @@ const moment = require('moment');
 const Data = require('../models/Data');
 
 // @route GET /api/data/:date
-
-// @desc Get current day data
+// @desc GET data for current date
+// @reduxAction onDateChange
 
 router.get('/:date', (req, res) => {
   Data.findOne({
@@ -29,17 +29,20 @@ router.get('/:date', (req, res) => {
               new Data(newData)
                 .save()
                 .then(newDate => res.json(newDate))
-                .catch(err => res.send(err));
+                .catch(err => res.json(err));
+            } else {
+              res.status(500).send('500 - Failed to add date to database.');
             }
           })
-          .catch(err => res.send(err));
+          .catch(err => res.json(err));
       }
     })
-    .catch(err => res.send(err));
+    .catch(err => res.json(err));
 });
 
 // @route POST /api/data/target
-// @desc SET Target
+// @desc SET Target for specific date
+// @reduxAction setTargetAmount
 
 router.post('/target', (req, res) => {
   Data.findOne({ date: { $regex: req.body.date } })
@@ -52,6 +55,8 @@ router.post('/target', (req, res) => {
         )
           .then(newTarget => res.json(newTarget))
           .catch(err => res.json(err));
+      } else {
+        res.status(404).send('Invalid Date');
       }
     })
     .catch(err => res.json(err));
@@ -59,8 +64,9 @@ router.post('/target', (req, res) => {
 
 module.exports = router;
 
-// @route POST /api/data/newTotal
+// @route POST /api/data/total
 // @desc SET Target
+// @reduxAction plusIntakeAmount
 
 router.post('/total', (req, res) => {
   Data.findOne({ date: { $regex: req.body.date } })
@@ -74,25 +80,13 @@ router.post('/total', (req, res) => {
           },
           { new: true }
         )
-          .then(result => res.json(result))
+          .then(newTotal => res.json(newTotal))
           .catch(err => res.json(err));
+      } else {
+        res.status(404).send('Invalid Date.');
       }
     })
     .catch(err => res.json(err));
-});
-
-router.post('/logs', (req, res) => {
-  Data.findOne({ date: { $regex: req.body.date } }).then(date => {
-    if (date) {
-      Data.findOneAndUpdate(
-        { date: { $regex: req.body.date } },
-        { $push: { logs: { timestamp: Date.now(), amount: req.body.amount } } },
-        { new: true, upsert: true }
-      )
-        .then(result => res.json(result))
-        .catch(err => res.json(err));
-    }
-  });
 });
 
 module.exports = router;

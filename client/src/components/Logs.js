@@ -55,17 +55,10 @@ const logs = props => {
                                     {moment(log.timestamp).format('DD/MM/YYYY')}
                                   </td>
                                   <td>
-                                    {moment(log.timestamp).format('k:mm a')}
+                                    {moment(log.timestamp).format('k:mm')}
                                   </td>
                                   <td>{log.amount}ml</td>
                                 </tr>
-                                // <ul style={{ display: 'block' }}>
-                                //   <li>
-                                //     {moment(log.timestamp).format('DD/MM/YYYY')} -{' '}
-                                //     {moment(log.timestamp).format('hh:mm:ss a')} -{' '}
-                                //     {log.amount}ml
-                                //   </li>
-                                // </ul>
                               ))
                           : null}
                       </tbody>
@@ -73,8 +66,8 @@ const logs = props => {
                   </div>
                 ) : (
                   <div style={{ textAlign: 'center' }}>
-                    <h2>No Water Consumption Logged...</h2>
-                    <h4>Get hydrating buddy!</h4>
+                    <h1>No Water Consumption Logged...</h1>
+                    <h2>Get hydrating buddy!</h2>
                   </div>
                 )}
               </Logs>

@@ -2,10 +2,11 @@ import * as actions from '../actions/actionTypes';
 import moment from 'moment';
 
 const initialState = {
-  date: moment(Date.now()).toISOString(),
+  date: moment(Date.now()),
   dayIntakeAmount: 0,
   target: 1000,
-  inputValue: 0
+  inputValue: '',
+  errors: ''
 };
 
 export default (state = initialState, action) => {
@@ -14,7 +15,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         dayIntakeAmount: action.amount <= 0 ? 0 : action.amount,
-        logs: action.logs
+        logs: action.logs,
+        errors: action.errors
       };
     case actions.SET_TARGET_AMOUNT:
       return {
@@ -27,12 +29,24 @@ export default (state = initialState, action) => {
         date: action.payload.date,
         dayIntakeAmount: action.payload.dayIntakeAmount,
         target: action.payload.target,
-        logs: action.payload.logs
+        logs: action.payload.logs,
+        errors: action.errors
       };
     case actions.ON_INPUT_CHANGE:
       return {
         ...state,
-        inputValue: action.payload === '' ? 0 : parseInt(action.payload)
+        inputValue:
+          action.payload === '' ? parseInt('') : parseInt(action.payload)
+      };
+    case actions.SET_ERRORS:
+      return {
+        ...state,
+        errors: action.errors
+      };
+    case actions.RESET_INPUT_VALUE:
+      return {
+        ...state,
+        inputValue: action.payload
       };
     default:
       return state;

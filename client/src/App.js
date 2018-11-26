@@ -27,14 +27,13 @@ const Image = styled.img`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 20%;
 `;
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { targetOpen: false, logsOpen: true };
+    this.state = { targetOpen: false, logsOpen: false };
   }
 
   targetToggle = () => {

@@ -38,8 +38,6 @@ const Input = props => {
     <InputWrapper>
       <Label htmlFor="inputValue">ADD WATER INTAKE:</Label>
       <InputBox
-        min={props.min}
-        max={props.max}
         style={props.style}
         pattern={props.pattern}
         height={props.height}
@@ -48,6 +46,7 @@ const Input = props => {
         onChange={props.onChange}
         name={props.name}
         type={props.type}
+        value={props.value}
       />
       <Suffix>{props.suffix}</Suffix>
     </InputWrapper>

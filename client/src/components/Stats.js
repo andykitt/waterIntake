@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 const StatsContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   font-size: 1rem;
-  letter-spacing: 0.1srem;
 
   @media (max-width: 768px) {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
   }
 `;
 
@@ -21,6 +21,13 @@ const StatsBlock = styled.div`
 `;
 
 const H2 = styled.h2`
+  font-size: 1rem;
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
+`;
+
+const H4 = styled.h4`
   font-weight: 300;
 `;
 
@@ -28,28 +35,28 @@ const Stats = props => {
   return (
     <StatsContainer>
       <StatsBlock>
-        <H2>TODAY'S TARGET</H2>
-        <h3>{props.state.target}ML</h3>
+        <H2>{props.state.target}ml</H2>
+        <H4>Today's Target</H4>
       </StatsBlock>
       <StatsBlock>
         {props.state.dayIntakeAmount >= props.state.target ? (
           <React.Fragment>
-            <H2>WELL DONE</H2>
-            <h4>TARGET REACHED</h4>
+            <H2>Well Done!</H2>
+            <H4>Target Reached</H4>
           </React.Fragment>
         ) : (
           <React.Fragment>
             <H2>{`Only ${props.state.target -
               props.state.dayIntakeAmount}ml`}</H2>
-            <h4>TO GO!</h4>
+            <H4>To Go!</H4>
           </React.Fragment>
         )}
       </StatsBlock>
       <StatsBlock>
         <H2>{`${Math.round(
           (props.state.dayIntakeAmount * 100) / props.state.target
-        )}%(${props.state.dayIntakeAmount}ml)`}</H2>
-        <h4>OF YOUR TARGET REACHED</h4>
+        )}%`}</H2>
+        <H4>Of Your Target</H4>
       </StatsBlock>
     </StatsContainer>
   );

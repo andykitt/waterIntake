@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Backdrop = styled.div`
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;

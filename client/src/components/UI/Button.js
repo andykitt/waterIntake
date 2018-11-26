@@ -10,7 +10,13 @@ const Btn = styled.button`
   border-radius: 0.2rem;
   border: none;
   background: ${props =>
-    props.success ? '#00b16a' : props.danger ? '#f22613' : 'white'};
+    props.success
+      ? '#23d160'
+      : props.danger
+      ? '#f22613'
+      : props.primary
+      ? '#209cee'
+      : 'white'};
 
   &:focus {
     outline: 0;
@@ -33,6 +39,7 @@ const Button = props => {
     <Btn
       width={props.width}
       danger={props.danger}
+      primary={props.primary}
       success={props.success}
       type={props.type}
       onClick={props.onClick}
