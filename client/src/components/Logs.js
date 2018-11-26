@@ -8,8 +8,14 @@ import { connect } from 'react-redux';
 import { Spring, config } from 'react-spring';
 
 const Table = styled.table`
+  font-size: 1rem;
+  padding: 1rem;
   text-align: left;
   text-transform: uppercase;
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+    padding: 0;
+  }
 `;
 
 const Logs = styled.div``;
@@ -30,7 +36,7 @@ const logs = props => {
                       margin: '1rem'
                     }}
                   >
-                    <Table cellPadding="10">
+                    <Table cellPadding="5">
                       <thead>
                         <tr>
                           <th>date</th>

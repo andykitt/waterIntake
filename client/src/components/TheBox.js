@@ -12,7 +12,6 @@ import { plusIntakeAmount, onInputChange } from '../store/actions/dataActions';
 const Controls = styled.div`
   display: flex;
   justify-content: space-evenly;
-  width: 60%;
   align-items: center;
   margin-bottom: 3rem;
 `;

@@ -6,6 +6,12 @@ const StatsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  font-size: 1rem;
+  letter-spacing: 0.1srem;
+
+  @media (max-width: 768px) {
+    font-size: 0.5rem;
+  }
 `;
 
 const StatsBlock = styled.div`
@@ -22,7 +28,7 @@ const Stats = props => {
   return (
     <StatsContainer>
       <StatsBlock>
-        <H2>TODAY'S TARGET:</H2>
+        <H2>TODAY'S TARGET</H2>
         <h3>{props.state.target}ML</h3>
       </StatsBlock>
       <StatsBlock>

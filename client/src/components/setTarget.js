@@ -22,6 +22,14 @@ const ButtonControls = styled.div`
   justify-content: space-around;
 `;
 
+const BlockQuote = styled.blockquote`
+  font-size: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+`;
+
 class setTarget extends Component {
   constructor(props) {
     super(props);
@@ -46,12 +54,11 @@ class setTarget extends Component {
             <Backdrop style={styles}>
               <Card>
                 <Form onSubmit={this.handleSubmit}>
-                  <blockquote>
-                    In climates such as the UK's, we should drink
-                    <br /> about 1.2 litres (six to eight glasses) of fluid
-                    <br />
-                    every day to stop us getting dehydrated.
-                  </blockquote>
+                  <BlockQuote>
+                    In climates such as the UK's, we should drink about 1.2
+                    litres (six to eight glasses) of fluid every day to stop us
+                    getting dehydrated.
+                  </BlockQuote>
                   <Input
                     required
                     name="target"

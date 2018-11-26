@@ -5,6 +5,21 @@ import 'react-dates/lib/css/_datepicker.css';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { onDateChange } from '../store/actions/dataActions';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const Label = styled.span`
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-right: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+`;
 
 class Calendar extends Component {
   constructor(props) {
@@ -21,20 +36,20 @@ class Calendar extends Component {
 
   render() {
     return (
-      <div>
-        <span>Select Date: </span>
+      <Container>
+        <Label>Select Date: </Label>
         <SingleDatePicker
           displayFormat="DD/MM/YYYY"
-          date={moment(this.props.state.date)} // momentPropTypes.momentObj or null
-          onDateChange={date => this.props.onDateChange(date)} // PropTypes.func.isRequired
-          focused={this.state.focused} // PropTypes.bool
-          onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-          id="your_unique_id" // PropTypes.string.isRequired,
+          date={moment(this.props.state.date)}
+          onDateChange={date => this.props.onDateChange(date)}
+          focused={this.state.focused}
+          onFocusChange={({ focused }) => this.setState({ focused })}
+          id="calendar"
           numberOfMonths={1}
           isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())}
           withPortal
         />
-      </div>
+      </Container>
     );
   }
 }

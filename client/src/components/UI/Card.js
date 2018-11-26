@@ -10,9 +10,10 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   font-family: 'Lato', sans-serif;
+  max-width: 70vw;
 
-  @media (max-width: 900px) {
-    width: 90vw;
+  @media (max-width: 768px) {
+    width: 70vw;
   }
 `;
 

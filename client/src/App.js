@@ -34,7 +34,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { targetOpen: false, logsOpen: false };
+    this.state = { targetOpen: false, logsOpen: true };
   }
 
   targetToggle = () => {
