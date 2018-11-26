@@ -9,7 +9,7 @@ Users can :
 - View water consumption from previous days.
 - View a log of daily intake.
 
-## HOW TO USE
+## How to use
 
 ### Heroku App:
 
@@ -18,12 +18,12 @@ Users can :
 ### Full App:
 
 - Create a empty mongoDB database at https://mlab.com/.
-- add a keys_dev.js in ./config folder and include :
+- add keys_dev.js in ./config folder and include :
 
 ```
 module.exports = {
   mongoURI:
-    'mongodb://heroku_xjwj109w:vvdkh5g7l9lthblgtvos8a0acq@ds245240.mlab.com:45240/heroku_xjwj109w'
+    'mongodb://<dbuser>:<dbpassword>@<dbhost>'
 };
 ```
 
