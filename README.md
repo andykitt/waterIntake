@@ -36,3 +36,9 @@ module.exports = {
 ### Wireframes.
 
 See waterIntake.sketch in repo.
+
+## TO DO:
+
+- Dockerise.
+- Travis integration.
+- Add Tests. 
