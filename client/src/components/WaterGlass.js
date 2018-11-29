@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Spring } from 'react-spring';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const Glass = styled.div`
   position: relative;
@@ -26,7 +27,7 @@ const Liquid = styled.div`
   background: linear-gradient(to bottom, #56ccf2, #2f80ed);
 `;
 
-class waterGlass extends Component {
+class WaterGlass extends Component {
   constructor(props) {
     super(props);
 
@@ -78,4 +79,8 @@ const mapStateToProps = state => ({
   state
 });
 
-export default connect(mapStateToProps)(waterGlass);
+WaterGlass.propTypes = {
+  state: PropTypes.func
+};
+
+export default connect(mapStateToProps)(WaterGlass);

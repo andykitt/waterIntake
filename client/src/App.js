@@ -4,7 +4,7 @@ import TheBox from './components/TheBox';
 import { Spring } from 'react-spring';
 import waterImage from './assets/images/water.png';
 import { connect } from 'react-redux';
-import SetTarget from './components/setTarget';
+import SetTarget from './components/SetTarget';
 import Logs from './components/Logs';
 
 const Container = styled.div`

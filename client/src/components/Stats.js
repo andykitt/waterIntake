@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const StatsContainer = styled.div`
   display: flex;
@@ -60,6 +61,10 @@ const Stats = props => {
       </StatsBlock>
     </StatsContainer>
   );
+};
+
+Stats.propTypes = {
+  state: PropTypes.object
 };
 
 const mapStateToProps = state => ({

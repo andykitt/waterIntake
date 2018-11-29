@@ -63,7 +63,7 @@ Input.propTypes = {
   onChange: PropTypes.func,
   name: PropTypes.string,
   type: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   suffix: PropTypes.string
 };
 

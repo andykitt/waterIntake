@@ -12,6 +12,7 @@ import {
   onInputChange,
   resetInputValue
 } from '../store/actions/dataActions';
+import PropTypes from 'prop-types';
 
 const Controls = styled.div`
   display: flex;
@@ -118,6 +119,15 @@ const mapDispatchToProps = dispatch => ({
   onInputChange: value => dispatch(onInputChange(value)),
   onResetInputValue: value => dispatch(resetInputValue(value))
 });
+
+TheBox.propTypes = {
+  state: PropTypes.object,
+  targetToggle: PropTypes.func,
+  logsToggle: PropTypes.func,
+  onAddAmount: PropTypes.func,
+  onInputChange: PropTypes.func,
+  onResetInputValue: PropTypes.func
+};
 
 export default connect(
   mapStateToProps,

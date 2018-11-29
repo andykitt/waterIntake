@@ -6,6 +6,7 @@ import Backdrop from './UI/Backdrop';
 import Card from './UI/Card';
 import { connect } from 'react-redux';
 import { Spring, config } from 'react-spring';
+import PropTypes from 'prop-types';
 
 const Table = styled.table`
   font-size: 1rem;
@@ -78,6 +79,11 @@ const logs = props => {
       </Spring>
     </div>
   );
+};
+
+logs.propTypes = {
+  logsToggle: PropTypes.func,
+  state: PropTypes.object
 };
 
 const mapStateToProps = state => ({

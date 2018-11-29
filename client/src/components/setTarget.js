@@ -5,8 +5,13 @@ import Button from './UI/Button';
 import Backdrop from './UI/Backdrop';
 import Card from './UI/Card';
 import { connect } from 'react-redux';
-import { setTargetAmount } from '../store/actions/dataActions';
+import {
+  setTargetAmount,
+  onInputChange,
+  resetInputValue
+} from '../store/actions/dataActions';
 import { Spring, config } from 'react-spring';
+import PropTypes from 'prop-types';
 
 const Form = styled.form`
   display: flex;
@@ -30,21 +35,16 @@ const BlockQuote = styled.blockquote`
   }
 `;
 
-class setTarget extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { target: 0 };
-  }
-
+class SetTarget extends Component {
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.props.onInputChange(e.target.value);
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSetTarget(this.state.target, this.props.state.date);
+    this.props.onSetTarget(this.props.state.inputValue, this.props.state.date);
     this.props.targetToggle();
+    this.props.resetInputValue('');
   };
 
   render() {
@@ -89,9 +89,18 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSetTarget: (target, date) => dispatch(setTargetAmount(target, date))
+  onSetTarget: (target, date) => dispatch(setTargetAmount(target, date)),
+  onInputChange: value => dispatch(onInputChange(value)),
+  resetInputValue: value => dispatch(resetInputValue(value))
 });
+
+SetTarget.propTypes = {
+  state: PropTypes.object,
+  onSetTarget: PropTypes.func,
+  targetToggle: PropTypes.func
+};
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(setTarget);
+)(SetTarget);

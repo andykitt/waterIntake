@@ -6,6 +6,7 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import { onDateChange } from '../store/actions/dataActions';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
   display: flex;
@@ -60,6 +61,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onDateChange: date => dispatch(onDateChange(date))
 });
+
+Calendar.propTypes = {
+  onDateChange: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired
+};
 
 export default connect(
   mapStateToProps,
