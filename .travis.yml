@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - 'stable'
+cache:
+  directories:
+    - node_modules
+    - client/node_modules
+install:
+  - npm install & npm install --prefix client
+script:
+  - npm run test --prefix client -- --coverage
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU_KEY
+  app: arcane-gorge-65762

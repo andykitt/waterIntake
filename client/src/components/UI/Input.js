@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const InputBox = styled.input`
   border-radius: 5rem solid #4286f4;
@@ -51,6 +52,19 @@ const Input = props => {
       <Suffix>{props.suffix}</Suffix>
     </InputWrapper>
   );
+};
+
+Input.propTypes = {
+  style: PropTypes.object,
+  pattern: PropTypes.string,
+  height: PropTypes.string,
+  disabled: PropTypes.bool,
+  required: PropTypes.bool,
+  onChange: PropTypes.func,
+  name: PropTypes.string,
+  type: PropTypes.string,
+  value: PropTypes.string,
+  suffix: PropTypes.string
 };
 
 export default Input;

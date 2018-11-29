@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
   background-color: white;
@@ -19,6 +20,14 @@ const Container = styled.div`
 
 const card = props => {
   return <Container>{props.children}</Container>;
+};
+
+card.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.array,
+    PropTypes.object
+  ])
 };
 
 export default card;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Backdrop = styled.div`
   position: fixed;
@@ -16,7 +17,16 @@ const Backdrop = styled.div`
 `;
 
 const backdrop = props => {
-  return <Backdrop onClick={props.onClick}>{props.children}</Backdrop>;
+  return (
+    <Backdrop id="backdrop" onClick={props.onClick}>
+      {props.children}
+    </Backdrop>
+  );
+};
+
+backdrop.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.object
 };
 
 export default backdrop;
