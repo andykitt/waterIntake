@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const StatsContainer = styled.div`
+const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,42 +32,40 @@ const H4 = styled.h4`
   font-weight: 300;
 `;
 
-const Stats = props => {
+const stats = props => {
+  const { target, dayIntakeAmount } = props.state;
   return (
-    <StatsContainer>
+    <Wrapper>
       <StatsBlock>
-        <H2>{props.state.target}ml</H2>
+        <H2>{target}ml</H2>
         <H4>Today's Target</H4>
       </StatsBlock>
       <StatsBlock>
-        {props.state.dayIntakeAmount >= props.state.target ? (
+        {dayIntakeAmount >= target ? (
           <React.Fragment>
             <H2>Well Done!</H2>
             <H4>Target Reached</H4>
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <H2>{`Only ${props.state.target -
-              props.state.dayIntakeAmount}ml`}</H2>
+            <H2>{`Only ${target - dayIntakeAmount}ml`}</H2>
             <H4>To Go!</H4>
           </React.Fragment>
         )}
       </StatsBlock>
       <StatsBlock>
-        <H2>{`${Math.round(
-          (props.state.dayIntakeAmount * 100) / props.state.target
-        )}%`}</H2>
+        <H2>{`${Math.round((dayIntakeAmount * 100) / target)}%`}</H2>
         <H4>Of Your Target</H4>
       </StatsBlock>
-    </StatsContainer>
+    </Wrapper>
   );
 };
 
-Stats.propTypes = {
+stats.propTypes = {
   state: PropTypes.object
 };
 
 const mapStateToProps = state => ({
   state
 });
-export default connect(mapStateToProps)(Stats);
+export default connect(mapStateToProps)(stats);

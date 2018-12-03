@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Backdrop = styled.div`
+const Wrapper = styled.div`
   position: fixed;
   display: flex;
   justify-content: center;
@@ -18,9 +18,9 @@ const Backdrop = styled.div`
 
 const backdrop = props => {
   return (
-    <Backdrop id="backdrop" onClick={props.onClick}>
+    <Wrapper data-testid="backdrop" onClick={props.onClick} style={props.style}>
       {props.children}
-    </Backdrop>
+    </Wrapper>
   );
 };
 

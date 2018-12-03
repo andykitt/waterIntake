@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const data = require('./routes/data.js');
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -29,6 +29,9 @@ mongoose
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
+
+  // join all files accept /api
+
   app.get(/^\/(?!api).*/, (req, res) => {
     res.sendFile(path.join(__dirname, './client/build/index.html'));
   });

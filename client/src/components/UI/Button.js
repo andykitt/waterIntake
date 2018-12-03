@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Btn = styled.button`
+const Wrapper = styled.button`
   height: 2.5rem;
   padding: 0.4rem 1rem;
   color: white;
@@ -35,9 +35,10 @@ const Btn = styled.button`
   }
 `;
 
-const Button = props => {
+const button = props => {
   return (
-    <Btn
+    <Wrapper
+      data-testid="button"
       width={props.width}
       danger={props.danger}
       primary={props.primary}
@@ -47,11 +48,11 @@ const Button = props => {
       disabled={props.disabled}
     >
       {props.children}
-    </Btn>
+    </Wrapper>
   );
 };
 
-Button.propTypes = {
+button.propTypes = {
   width: PropTypes.string,
   danger: PropTypes.bool,
   primary: PropTypes.bool,
@@ -61,4 +62,4 @@ Button.propTypes = {
   disabled: PropTypes.bool
 };
 
-export default Button;
+export default button;

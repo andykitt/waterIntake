@@ -10,7 +10,7 @@ const InputBox = styled.input`
   font-size: 1.5rem;
 `;
 
-const InputWrapper = styled.div`
+const Wrapper = styled.div`
   display: inline-block;
   position: relative;
   height: 100%;
@@ -34,9 +34,9 @@ const Label = styled.label`
   top: -1rem;
 `;
 
-const Input = props => {
+const input = props => {
   return (
-    <InputWrapper>
+    <Wrapper>
       <Label htmlFor="inputValue">ADD WATER INTAKE:</Label>
       <InputBox
         style={props.style}
@@ -50,11 +50,11 @@ const Input = props => {
         value={props.value}
       />
       <Suffix>{props.suffix}</Suffix>
-    </InputWrapper>
+    </Wrapper>
   );
 };
 
-Input.propTypes = {
+input.propTypes = {
   style: PropTypes.object,
   pattern: PropTypes.string,
   height: PropTypes.string,
@@ -67,4 +67,4 @@ Input.propTypes = {
   suffix: PropTypes.string
 };
 
-export default Input;
+export default input;

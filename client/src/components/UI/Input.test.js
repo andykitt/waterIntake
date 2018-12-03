@@ -1,8 +1,8 @@
 import React from 'react';
+import Input from './Input';
 import { render } from 'react-testing-library';
-import Backdrop from './Backdrop';
 
-test('<Backdrop />', () => {
-  const { container } = render(<Backdrop />);
+test('<Input /> renders correctly', () => {
+  const { container } = render(<Input />);
   expect(container.firstChild).toMatchSnapshot();
 });

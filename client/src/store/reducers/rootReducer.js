@@ -6,7 +6,8 @@ const initialState = {
   dayIntakeAmount: 0,
   target: 1000,
   inputValue: '',
-  errors: ''
+  errors: '',
+  logs: ''
 };
 
 export default (state = initialState, action) => {

@@ -1,8 +1,8 @@
 import React from 'react';
+import Card from './Card';
 import { render } from 'react-testing-library';
-import Backdrop from './Backdrop';
 
-test('<Backdrop />', () => {
-  const { container } = render(<Backdrop />);
+test('card renders correctly', () => {
+  const { container } = render(<Card />);
   expect(container.firstChild).toMatchSnapshot();
 });

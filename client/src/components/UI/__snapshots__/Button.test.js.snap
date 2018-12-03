@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders danger with color #f22613 1`] = `
+<button
+  class="sc-bdVaJa fzjQEY"
+  data-testid="button"
+/>
+`;
+
+exports[`renders primary with color #209cee 1`] = `
+<button
+  class="sc-bdVaJa kZKjYZ"
+  data-testid="button"
+/>
+`;
+
+exports[`renders primary with color white 1`] = `
+<button
+  class="sc-bdVaJa bgDRfj"
+  data-testid="button"
+/>
+`;
+
+exports[`renders success 1`] = `
+<button
+  class="sc-bdVaJa ghaKnc"
+  data-testid="button"
+/>
+`;
+
+exports[`renders success with color #23d160 1`] = `
+<button
+  class="sc-bdVaJa ghaKnc"
+  data-testid="button"
+/>
+`;

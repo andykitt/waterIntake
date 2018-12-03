@@ -19,65 +19,61 @@ const Table = styled.table`
   }
 `;
 
-const Logs = styled.div``;
+const IntakeLogs = styled.div``;
 
-const logs = props => {
+export const logs = props => {
   return (
-    <div>
-      <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={config.slow}>
-        {styles => (
-          <Backdrop style={styles} onClick={props.logsToggle}>
-            <Card>
-              <Logs>
-                {props.state.logs ? (
-                  <div
-                    style={{
-                      overflow: 'scroll',
-                      maxHeight: '50vh',
-                      margin: '1rem'
-                    }}
-                  >
-                    <Table cellPadding="5">
-                      <thead>
-                        <tr>
-                          <th>date</th>
-                          <th>time</th>
-                          <th>water consumed</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {props.state.logs
-                          ? props.state.logs
-                              .slice()
-                              .reverse()
-                              .map((log, index) => (
-                                <tr key={index}>
-                                  <td>
-                                    {moment(log.timestamp).format('DD/MM/YYYY')}
-                                  </td>
-                                  <td>
-                                    {moment(log.timestamp).format('k:mm')}
-                                  </td>
-                                  <td>{log.amount}ml</td>
-                                </tr>
-                              ))
-                          : null}
-                      </tbody>
-                    </Table>
-                  </div>
-                ) : (
-                  <div style={{ textAlign: 'center' }}>
-                    <h1>No Water Consumption Logged...</h1>
-                    <h2>Get hydrating buddy!</h2>
-                  </div>
-                )}
-              </Logs>
-              <Button danger>CLOSE</Button>
-            </Card>
-          </Backdrop>
-        )}
-      </Spring>
-    </div>
+    <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={config.slow}>
+      {opacity => (
+        <Backdrop style={opacity} onClick={props.logsToggle}>
+          <Card>
+            <IntakeLogs>
+              {props.state.logs ? (
+                <div
+                  style={{
+                    overflow: 'scroll',
+                    maxHeight: '50vh',
+                    margin: '1rem'
+                  }}
+                >
+                  <Table cellPadding="5">
+                    <thead>
+                      <tr>
+                        <th>date</th>
+                        <th>time</th>
+                        <th>water consumed</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {props.state.logs
+                        ? props.state.logs
+                            .slice()
+                            .reverse()
+                            .map((log, index) => (
+                              <tr key={index}>
+                                <td>
+                                  {moment(log.timestamp).format('DD/MM/YYYY')}
+                                </td>
+                                <td>{moment(log.timestamp).format('k:mm')}</td>
+                                <td>{log.amount}ml</td>
+                              </tr>
+                            ))
+                        : null}
+                    </tbody>
+                  </Table>
+                </div>
+              ) : (
+                <div className="banana" style={{ textAlign: 'center' }}>
+                  <h1>No Water Consumption Logged...</h1>
+                  <h2>Get hydrating buddy!</h2>
+                </div>
+              )}
+            </IntakeLogs>
+            <Button danger>CLOSE</Button>
+          </Card>
+        </Backdrop>
+      )}
+    </Spring>
   );
 };
 

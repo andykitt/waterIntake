@@ -29,12 +29,9 @@ const Image = styled.img`
   width: 100%;
 `;
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { targetOpen: false, logsOpen: false };
-  }
+export class App extends Component {
+  // toggle state for setTarget and logs Modal
+  state = { targetOpen: false, logsOpen: false };
 
   targetToggle = () => {
     this.setState(prevState => ({ targetOpen: !prevState.targetOpen }));
@@ -46,21 +43,20 @@ class App extends Component {
   render() {
     let liquid;
 
-    if (
-      (this.props.state.dayIntakeAmount * 100) / this.props.state.target >=
-      100
-    ) {
+    const { targetOpen, logsOpen } = this.state;
+    const { dayIntakeAmount, target } = this.props.state;
+
+    // if > 100% of target reached, go to 120% of screen for coverage
+
+    if ((dayIntakeAmount * 100) / target >= 100) {
       liquid = '120%';
     } else {
-      liquid = `${(this.props.state.dayIntakeAmount * 100) /
-        this.props.state.target}%`;
+      liquid = `${(dayIntakeAmount * 100) / target}%`;
     }
     return (
       <Container>
-        {this.state.targetOpen ? (
-          <SetTarget targetToggle={this.targetToggle} />
-        ) : null}
-        {this.state.logsOpen ? <Logs logsToggle={this.logsToggle} /> : null}
+        {targetOpen ? <SetTarget targetToggle={this.targetToggle} /> : null}
+        {logsOpen ? <Logs logsToggle={this.logsToggle} /> : null}
         <LiquidContainer>
           <Spring
             from={{

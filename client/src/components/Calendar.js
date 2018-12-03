@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import 'react-dates/initialize';
 import { SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import '../react_dates_overrides.css';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { onDateChange } from '../store/actions/dataActions';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Container = styled.div`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
 `;
@@ -22,14 +23,10 @@ const Label = styled.span`
   }
 `;
 
-class Calendar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      focused: false
-    };
-  }
+export class Calendar extends Component {
+  state = {
+    focused: false
+  };
 
   componentDidMount() {
     this.props.onDateChange(this.props.state.date);
@@ -37,7 +34,7 @@ class Calendar extends Component {
 
   render() {
     return (
-      <Container>
+      <Wrapper>
         <Label>Select Date: </Label>
         <SingleDatePicker
           displayFormat="DD/MM/YYYY"
@@ -50,7 +47,7 @@ class Calendar extends Component {
           isOutsideRange={day => !isInclusivelyBeforeDay(day, moment())}
           withPortal
         />
-      </Container>
+      </Wrapper>
     );
   }
 }

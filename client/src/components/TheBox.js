@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import WaterGlass from './WaterGlass';
 import Button from './UI/Button';
 import Input from './UI/Input';
 import Card from './UI/Card';
@@ -42,17 +41,14 @@ const H1 = styled.h1`
 `;
 
 class TheBox extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleChange = this.handleChange.bind(this);
-  }
   addAmount = e => {
+    const { onAddAmount, onResetInputValue } = this.props;
+    const { dayIntakeAmount, inputValue, date } = this.props.state;
+
     e.preventDefault();
-    const addToTotal =
-      this.props.state.dayIntakeAmount + this.props.state.inputValue;
-    this.props.onAddAmount(addToTotal, this.props.state.date);
-    this.props.onResetInputValue('');
+    const addToTotal = dayIntakeAmount + inputValue;
+    onAddAmount(addToTotal, date);
+    onResetInputValue('');
   };
 
   handleChange = e => {
@@ -60,13 +56,15 @@ class TheBox extends Component {
   };
 
   render() {
+    const { dayIntakeAmount, inputValue, date } = this.props.state;
+    const { targetToggle, logsToggle } = this.props;
     return (
       <Card>
-        {this.props.state.date ? (
+        {date ? (
           <React.Fragment>
             <Calendar />
             <Title>Consumption Today:</Title>
-            <H1>{this.props.state.dayIntakeAmount}ml</H1>
+            <H1>{dayIntakeAmount}ml</H1>
             <Stats />
 
             {/* <WaterGlass /> */}
@@ -76,25 +74,21 @@ class TheBox extends Component {
                   type="number"
                   required
                   name="inputValue"
-                  value={this.props.state.inputValue}
+                  value={inputValue}
                   onChange={this.handleChange}
                   suffix="ml"
                 />
 
-                <Button
-                  success
-                  type="submit"
-                  disabled={this.props.state.inputValue <= 0}
-                >
+                <Button success type="submit" disabled={inputValue <= 0}>
                   ADD
                 </Button>
               </form>
             </Controls>
             <Controls>
-              <Button success onClick={this.props.targetToggle}>
+              <Button success onClick={targetToggle}>
                 SET TARGET
               </Button>
-              <Button primary onClick={this.props.logsToggle}>
+              <Button primary onClick={logsToggle}>
                 VIEW LOG
               </Button>
             </Controls>

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Container = styled.div`
+const Wrapper = styled.div`
   background-color: white;
   box-shadow: 0.3rem 0.3rem 2rem 0rem rgba(0, 0, 0, 0.1);
   display: flex;
@@ -19,7 +19,7 @@ const Container = styled.div`
 `;
 
 const card = props => {
-  return <Container>{props.children}</Container>;
+  return <Wrapper>{props.children}</Wrapper>;
 };
 
 card.propTypes = {

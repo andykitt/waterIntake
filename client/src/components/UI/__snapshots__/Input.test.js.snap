@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> renders correctly 1`] = `
+<div
+  class="sc-bwzfXH hqUpYe"
+>
+  <label
+    class="sc-bxivhb zgdyz"
+    for="inputValue"
+  >
+    ADD WATER INTAKE:
+  </label>
+  <input
+    class="sc-bdVaJa fyGNaX"
+    value=""
+  />
+  <span
+    class="sc-htpNat iaZDtE"
+  />
+</div>
+`;

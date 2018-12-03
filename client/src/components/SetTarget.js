@@ -13,8 +13,6 @@ import {
 import { Spring, config } from 'react-spring';
 import PropTypes from 'prop-types';
 
-//
-
 const Form = styled.form`
   display: flex;
   align-items: center;
@@ -43,10 +41,12 @@ class SetTarget extends Component {
   };
 
   handleSubmit = e => {
+    const { onSetTarget, targetToggle, resetInputValue } = this.props;
+    const { inputValue, date } = this.props.state;
     e.preventDefault();
-    this.props.onSetTarget(this.props.state.inputValue, this.props.state.date);
-    this.props.targetToggle();
-    this.props.resetInputValue('');
+    onSetTarget(inputValue, date);
+    targetToggle();
+    resetInputValue('');
   };
 
   render() {
