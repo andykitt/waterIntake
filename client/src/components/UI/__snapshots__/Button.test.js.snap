@@ -21,13 +21,6 @@ exports[`renders primary with color white 1`] = `
 />
 `;
 
-exports[`renders success 1`] = `
-<button
-  class="sc-bdVaJa ghaKnc"
-  data-testid="button"
-/>
-`;
-
 exports[`renders success with color #23d160 1`] = `
 <button
   class="sc-bdVaJa ghaKnc"
