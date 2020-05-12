@@ -27,7 +27,15 @@ module.exports = {
 };
 ```
 
-- run `npm run dev`
+To build -
+
+- run `npm install` (Installs server-side dependencies)
+- run `npm run client install` (Installs client-side dependencies)
+- run `npm run build --prefix client` (Builds client-side static code)
+
+To run -
+
+- run `npm run dev` (Runs development server)
 
 ### Client-only:
 
