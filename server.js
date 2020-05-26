@@ -22,7 +22,7 @@ const db = require('./config/keys').mongoURI;
 mongoose
   .connect(
     db,
-    { useNewUrlParser: true }
+    { useNewUrlParser: true, dbName: (process.env.MONGODB_DBNAME ? process.env.MONGODB_DBNAME : undefined) }
   )
   .then(() => console.log(`Connected to MongoDB...`))
   .catch(err => console.log('DATABASE ERROR', err));

@@ -20,4 +20,4 @@ const DataSchema = new Schema({
   }
 });
 
-module.exports = Data = mongoose.model('data', DataSchema);
+module.exports = Data = mongoose.model((process.env.MONGODB_COLLECTIONNAME ? process.env.MONGODB_COLLECTIONNAME : 'data'), DataSchema);
